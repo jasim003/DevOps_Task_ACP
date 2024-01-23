@@ -1,0 +1,31 @@
+# Python Deployment 
+
+## Using HELM CMD
+
+> helm install python web-app-svc
+
+## Using Kubernetes native CMD
+
+> kubectl create -f App_Deployment/python_deploy.yaml
+
+# Redis Deployment
+
+## Using HELM CMD
+
+> helm install redis web-app-svc -f redis/value.yaml
+
+## Using Kubernetes native CMD
+
+> kubectl create -f App_Deployment/redis_deploy.yaml
+
+# Testing the application
+
+* Port forward the python application service using the below command
+    > kubectl port-forward service/python 8080:8080
+
+* Open the browser using the localhost ip address with the forward port number
+    > http://127.0.0.1:8080
+
+* Application status after hitting the URL
+    >![Getting Started](./Application_output.png)
+
