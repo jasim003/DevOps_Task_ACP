@@ -6,10 +6,10 @@ metadata:
     {{- include "web-app-svc.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
+  strategy: {{- toYaml .Values.deploymentStrategy | nindent 6 }}
   selector:
     matchLabels:
       {{- include "web-app-svc.selectorLabels" . | nindent 6 }}
-    strategy: {{- toYaml .Values.deploymentStrategy | nindent 6 }}
   template:
     metadata:
       labels:
