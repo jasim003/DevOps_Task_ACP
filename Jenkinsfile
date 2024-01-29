@@ -53,9 +53,9 @@
             steps {
                sh '''
                #!/bin/bash
-               kubectl get po -n "${EnvironmentName}" | grep -i python
-               sleep 2
-               kubectl get po -n "${EnvironmentName}" | grep -i redis
+               kubectl wait --for=condition=ready pod -l app=python -n "${EnvironmentName}" --timeout=30s
+               
+               kubectl wait --for=condition=ready pod -l app=redis -n "${EnvironmentName}" --timeout=30s
                '''
             }
         }

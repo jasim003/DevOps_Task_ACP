@@ -29,6 +29,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Selector labels
 */}}
 {{- define "web-app-svc.selectorLabels" -}}
+app: {{ .Release.Name }}
 app.kubernetes.io/name: {{ include "web-app-svc.name" . }}
 app.kubernetes.io/instance: {{ .Chart.Name }}
 {{- end }}
