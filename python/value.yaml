@@ -1,0 +1,18 @@
+replicaCount: 1
+
+image:
+  repository: jasimdocker003
+  pullPolicy: IfNotPresent
+  tag: python-server:latest
+
+service:
+  type: ClusterIP
+  port: 8080
+
+resources:
+   limits:
+     cpu: 100m
+     memory: 512Mi
+   requests:
+    cpu: 100m
+    memory: 256Mi

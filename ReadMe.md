@@ -2,13 +2,12 @@
 
 ## Using HELM CMD
 
-> helm install python web-app-svc
+> helm install python web-app-svc -f python/value.yaml
 
 ## Using Kubernetes native CMD
 
 > kubectl create -f App_Deployment/python_deploy.yaml
 
-# Redis Deployment
 
 ## Using HELM CMD
 
