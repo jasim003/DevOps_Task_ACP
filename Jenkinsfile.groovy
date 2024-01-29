@@ -18,7 +18,7 @@
             steps {
                sh '''
                #!/bin/bash
-               ${HELM} lint web-app-svc/
+               helm lint web-app-svc/
                '''
             }
         }
@@ -28,10 +28,10 @@
                #!/bin/bash
                pwd
                ls -lthr
-               if [[ $(helm upgrade python web-app-svc -n "${EnvironmentName}") == *Error* ]]; then
-                    echo "Release package is not avaliable!"
+               if [[ $(helm install python web-app-svc -f python/value.yaml -n "${EnvironmentName}") == *Error* ]]; then
+                  echo "Release package is not avaliable!"
                 else
-                    helm install python web-app-svc -n "${EnvironmentName}"
+                    helm upgrade python web-app-svc -f python/value.yaml -n "${EnvironmentName}"
                 fi
                '''
             }
@@ -41,10 +41,10 @@
             steps {
                sh '''
                #!/bin/bash
-                if [[ $(helm upgrade redis web-app-svc -f redis/value.yaml  -n "${EnvironmentName}") == *Error* ]]; then
+                if [[ $(helm install redis web-app-svc -f redis/value.yaml -n "${EnvironmentName}") == *Error* ]]; then
                     echo "Release package is not avaliable!"
                 else
-                    helm install redis web-app-svc -f redis/value.yaml -n "${EnvironmentName}"
+                    helm upgrade redis web-app-svc -f redis/value.yaml -n "${EnvironmentName}"
                 fi
                '''
             }
