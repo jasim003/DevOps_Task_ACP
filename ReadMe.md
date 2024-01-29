@@ -20,10 +20,10 @@
 
 # Testing the application
 
-* Port forward the python application service using the below command
+* Port forward the Python application service using the below command
     > kubectl port-forward service/python 8080:8080
 
-* Open the browser using the localhost ip address with the forward port number
+* Open the browser using the localhost IP address with the forward port number
     > http://127.0.0.1:8080
 
 * Application status after hitting the URL
