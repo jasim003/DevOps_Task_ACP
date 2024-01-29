@@ -15,7 +15,7 @@
             steps {
                sh '''
                #!/bin/bash
-               docker build -t python:v1 . 
+               docker build -t python:v${BUILD_NUMBER} . 
                '''
             }
         }
@@ -23,7 +23,7 @@
             steps {
                sh '''
                #!/bin/bash
-               docker tag python:v1 jasimdocker003/python:v1
+               docker tag python:v${BUILD_NUMBER} jasimdocker003/python:v${BUILD_NUMBER}
                '''
             }
         }
