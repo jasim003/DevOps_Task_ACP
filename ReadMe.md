@@ -1,4 +1,4 @@
-# Python Deployment 
+# Python Deployment
 
 ## Using HELM CMD
 
@@ -27,4 +27,3 @@
 
 * Application status after hitting the URL
     >![Getting Started](./Application_output.png)
-

@@ -1,8 +1,5 @@
  pipeline {
     agent any
-    parameters {
-    string(defaultValue: 'dev', description: 'Name of the environment to deploy', name: 'EnvironmentName', trim: true)
-  }
 
       environment {
         PATH="/usr/local/bin:$PATH"
@@ -12,6 +9,31 @@
         stage('Checkout') {
             steps {
                 git branch: 'main', credentialsId: 'c4b2addd-5cd4-4892-bbb4-7b34a202ebd6', url: 'https://github.com/jasim003/DevOps_Task_ACP.git'
+            }
+        }
+        stage('Docker Builld') {
+            steps {
+               sh '''
+               #!/bin/bash
+               docker build -t python:v1 . 
+               '''
+            }
+        }
+        stage('Docker image tag') {
+            steps {
+               sh '''
+               #!/bin/bash
+               docker tag python:v1 jasimdocker003/python:v1
+               '''
+            }
+        }
+            
+        stage('Docker push') {
+            steps {
+               sh '''
+               #!/bin/bash
+               docker push jasimdocker003/python:v1
+               '''
             }
         }
         stage('Helm Sanity') {
@@ -36,7 +58,6 @@
                '''
             }
         }
-            
         stage('Redis Deployment') {
             steps {
                sh '''

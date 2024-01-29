@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: jasimdocker003
   pullPolicy: IfNotPresent
-  tag: python-server:latest
+  tag: python:v1
 
 service:
   type: ClusterIP
