@@ -32,7 +32,7 @@
             steps {
                sh '''
                #!/bin/bash
-               docker push jasimdocker003/python:v1
+               docker push jasimdocker003/python:v${BUILD_NUMBER}
                '''
             }
         }
