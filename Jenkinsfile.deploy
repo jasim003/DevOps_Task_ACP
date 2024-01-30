@@ -1,5 +1,8 @@
  pipeline {
     agent any
+        parameters {
+            string(defaultValue: 'dev', description: 'Name of the environment to deploy', name: 'EnvironmentName', trim: true)
+        }
 
       environment {
         PATH="/usr/local/bin:$PATH"
